@@ -1,0 +1,32 @@
+.card-wrapper{
+  padding: 2px 0;
+  overflow-y: auto;
+}
+.card {
+  display: flex;  
+  align-items: center;
+  height: 72px;
+  padding: 16px 15px;
+  color: #000;
+  background: #fff;
+  border-radius: 8px;
+  text-align: left;
+}
+.card__icon{
+  margin-right: 16px;
+}
+.card__icon img{
+  width: 40px;
+  height: 40px;
+}
+.card__title{
+  font-weight: 500;
+font-size: 20px;
+line-height: 28px;
+letter-spacing: 0.0015em;
+}
+.card__description{
+  font-size: 14px;
+line-height: 20px;
+letter-spacing: 0.0025em;
+}
