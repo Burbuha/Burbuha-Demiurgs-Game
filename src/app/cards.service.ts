@@ -23,5 +23,10 @@ export class CardsService {
   addCard(): void {
     let i = Math.floor(Math.random()*2);
     this.cards.push(this.cells[i]);
+    if (this.cards.length >= 3 && this.cards[this.cards.length-1].id === 2 && this.cards[this.cards.length-2].id === 2 && this.cards[this.cards.length-3].id === 2) {
+      this.cards.push(this.cells[1]);
+    } else if (this.cards.length >= 2 && this.cards[this.cards.length-1].id === 1 && this.cards[this.cards.length-2].id === 1){
+      this.cards.push(this.cells[2]);
+    }     
   }
 };
