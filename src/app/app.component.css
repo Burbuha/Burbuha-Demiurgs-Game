@@ -12,7 +12,7 @@ main {
   overflow-y: auto;
   margin-bottom: auto;
 }
-.wrap{
+.wrap {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

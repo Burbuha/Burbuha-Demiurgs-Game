@@ -1,3 +1,4 @@
+import { CardsService } from './cards.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -14,7 +15,7 @@ import { ButtonComponent } from './button/button.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [CardsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

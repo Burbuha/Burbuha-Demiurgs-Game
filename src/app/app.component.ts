@@ -1,3 +1,4 @@
+import { CardsService } from './cards.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Клеточное наполнение';
+  constructor(public cardsService: CardsService) { }
 }

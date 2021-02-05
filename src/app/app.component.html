@@ -3,9 +3,9 @@
     <h1>{{ title }}</h1>
   </header>
   <main>
-    <app-card></app-card>
+    <app-card [card]="card" *ngFor="let card of cardsService.cards"></app-card>
   </main>
   <footer>
-    <app-button></app-button>
+    <app-button (click)="cardsService.addCard()"></app-button>
   </footer>
 </div>

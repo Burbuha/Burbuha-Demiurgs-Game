@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import * as EventEmitter from 'events';
 import { CardsService } from '../cards.service';
 
 @Component({
@@ -8,9 +9,15 @@ import { CardsService } from '../cards.service';
 })
 export class ButtonComponent implements OnInit {
 
+  @Output() onClick = new EventEmitter();
+
   constructor(public cardsService: CardsService) { }
 
   ngOnInit(): void {
+  }
+
+  handelClick(): void{
+    this.onClick;
   }
 
 }

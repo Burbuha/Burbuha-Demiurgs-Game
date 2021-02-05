@@ -7,7 +7,7 @@ export interface Cards {
   description: string;
 }
 
-@Injectable({ providedIn: "root" })
+@Injectable()
 export class CardsService {
   private cells = [
     {
@@ -28,36 +28,50 @@ export class CardsService {
       title: "Жизнь",
       description: "Ку-ку!",
     },
-  ];
+  ]; 
+  
+  private ALIVE = this.cells[0];
+  private DEAD = this.cells[1];
+  private LIFE = this.cells[2];
+  
+  private CELL_DEAD_COUNT: number = 3;
+  private CELL_ALIVE_COUNT: number = 2;
 
-  constructor() {}
+  private makePredicateFor = (arr, condition, count) => {
+    return (
+      arr.length >= count &&
+      arr.slice(-count).every((item) => item.id === condition.id)
+    );
+  };
+  private randomFn = () => Math.floor(Math.random() * 2);
+
+  private hasAlive = (arr) =>
+    this.makePredicateFor(arr, this.ALIVE, this.CELL_ALIVE_COUNT);
+
+  private hasDead = (arr) =>
+    this.makePredicateFor(arr, this.DEAD, this.CELL_DEAD_COUNT);
 
   public cards: Cards[] = [];
 
-  addCard(): void {
-    let i = Math.floor(Math.random() * 2);
-    this.cards.push(this.cells[i]);
+  constructor() {}
 
-    let lengthArr = this.cards.length;
+  updateCard(randomCell = this.randomFn()) {
+    const newCell = this.cells[randomCell];
+    const result = [...this.cards, newCell];
 
-    if (
-      lengthArr >= 3 &&
-      this.cards[lengthArr - 1].id === 2 &&
-      this.cards[lengthArr - 2].id === 2 &&
-      this.cards[lengthArr - 3].id === 2
-    ) {
-      for (let j = lengthArr - 1; j >= 0; j--) {
-        if (this.cards[j].id === 3) {
-          this.cards.splice(j, 1);
-          break;
-        }
-      }
-    } else if (
-      lengthArr >= 2 &&
-      this.cards[lengthArr - 1].id === 1 &&
-      this.cards[lengthArr - 2].id === 1
-    ) {
-      this.cards.push(this.cells[2]);
+    if (this.hasDead(result)) {
+      const lastLiveIndx = result.map((item) => item.id).lastIndexOf(this.LIFE.id);
+      result.splice(lastLiveIndx, 1);
     }
+
+    if (this.hasAlive(result)) {
+      result.push(this.LIFE);
+    }
+    
+    return result;
+  }
+
+  addCard(): void {
+    this.cards = [...this.updateCard()];
   }
 }

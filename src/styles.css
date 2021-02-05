@@ -1,9 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
-html, body, div, span, 
-h1, h2, p {
-	margin: 0;
-	padding: 0;
-	border: 0;
+html,
+body,
+div,
+span,
+h1,
+h2,
+p {
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
 html {
@@ -18,7 +23,7 @@ html {
 
 body {
   font-weight: 400;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background: linear-gradient(180deg, #310050 0%, #000000 100%);
 }
 
