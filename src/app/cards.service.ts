@@ -1,4 +1,6 @@
+import { randomFn, makePredicateFor } from './service.helpers';
 import { Injectable } from "@angular/core";
+
 
 export interface Cards {
   id: number;
@@ -29,7 +31,7 @@ export class CardsService {
       description: "Ку-ку!",
     },
   ]; 
-  
+    
   private ALIVE = this.cells[0];
   private DEAD = this.cells[1];
   private LIFE = this.cells[2];
@@ -37,25 +39,18 @@ export class CardsService {
   private CELL_DEAD_COUNT: number = 3;
   private CELL_ALIVE_COUNT: number = 2;
 
-  private makePredicateFor = (arr, condition, count) => {
-    return (
-      arr.length >= count &&
-      arr.slice(-count).every((item) => item.id === condition.id)
-    );
-  };
-  private randomFn = () => Math.floor(Math.random() * 2);
-
+  
   private hasAlive = (arr) =>
-    this.makePredicateFor(arr, this.ALIVE, this.CELL_ALIVE_COUNT);
+    makePredicateFor(arr, this.ALIVE, this.CELL_ALIVE_COUNT);
 
   private hasDead = (arr) =>
-    this.makePredicateFor(arr, this.DEAD, this.CELL_DEAD_COUNT);
+    makePredicateFor(arr, this.DEAD, this.CELL_DEAD_COUNT);
 
   public cards: Cards[] = [];
 
   constructor() {}
 
-  updateCard(randomCell = this.randomFn()) {
+  updateCard(randomCell = randomFn()) {
     const newCell = this.cells[randomCell];
     const result = [...this.cards, newCell];
 
