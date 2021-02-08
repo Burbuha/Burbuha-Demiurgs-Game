@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Cards } from "../cards.service";
+import { Card } from "../cards.service";
 
 @Component({
   selector: "app-card",
@@ -8,7 +8,7 @@ import { Cards } from "../cards.service";
 })
 export class CardComponent implements OnInit {
   @Input()
-  card!: Cards;
+  card!: Card;
 
   constructor() {}
 

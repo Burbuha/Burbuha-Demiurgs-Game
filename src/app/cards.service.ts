@@ -1,8 +1,8 @@
 import { ALIVE, DEAD, LIFE, cells } from "./conditions";
-import { randomFn, makePredicateFor } from "./service.helpers";
+import { randomFn, makePredicateFor, castLots } from "./service.helpers";
 import { Injectable } from "@angular/core";
 
-export interface Cards {
+export interface Card {
   id: number;
   icon: string;
   title: string;
@@ -19,12 +19,13 @@ export class CardsService {
 
   private hasDead = (arr) => makePredicateFor(arr, DEAD, this.CELL_DEAD_COUNT);
 
-  public cards: Cards[] = [];
+  public cards: Card[] = [];
 
   constructor() {}
 
-  updateCard(randomCell = randomFn()) {
-    const newCell = cells[randomCell];
+  updateCard(randomCell = randomFn) {
+    
+    const newCell = castLots(randomCell) ?  ALIVE : DEAD;
     const result = [...this.cards, newCell];
 
     if (this.hasDead(result)) {

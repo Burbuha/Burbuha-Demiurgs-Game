@@ -1,6 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
 import * as EventEmitter from 'events';
-import { CardsService } from '../cards.service';
 
 @Component({
   selector: 'app-button',
@@ -11,7 +10,7 @@ export class ButtonComponent implements OnInit {
 
   @Output() onClick = new EventEmitter();
 
-  constructor(public cardsService: CardsService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

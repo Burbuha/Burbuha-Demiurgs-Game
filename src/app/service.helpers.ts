@@ -5,3 +5,5 @@ export const makePredicateFor = (arr, condition, count) => {
   );
 };
 export const randomFn = () => Math.floor(Math.random() * 2);
+
+export const castLots = (randomFn) => Boolean(randomFn());
