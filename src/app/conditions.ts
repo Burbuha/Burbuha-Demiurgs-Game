@@ -11,14 +11,14 @@ export const cells = [
     title: "Мёртвая",
     description: "или прикидывается",
   },
-  {
-    id: 3,
-    icon: "../assets/life.jpg",
-    title: "Жизнь",
-    description: "Ку-ку!",
-  },
 ];
 
 export const ALIVE = cells[0];
 export const DEAD = cells[1];
-export const LIFE = cells[2];
+
+export const LIFE = {
+  id: 3,
+  icon: "../assets/life.jpg",
+  title: "Жизнь",
+  description: "Ку-ку!",
+};
